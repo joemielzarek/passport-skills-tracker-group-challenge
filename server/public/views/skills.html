@@ -1,0 +1,39 @@
+<h1>All the skills!</h1>
+<a href="#/user" class="btn btn-default">User</a>
+<button class="btn btn-default" ng-click="logout()">Log Out</button>
+<div class="container">
+
+    <div class="row inputcontainer">
+        <div class="">
+            <form>
+                <label for="skillform">Skill</label>
+                <input type="text" name="skillform" id="skillform" ng-model="currentSkill.skill" />
+                <label for="skillform">Years</label>
+                <input type="number" name="yearform" id="yearform" min="0" ng-model="currentSkill.years" />
+                <button ng-click="submitSkill()">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="skillscontainer row">
+        <form>
+            <h4>Sort by Years:</h4>
+            <label for="ascending">Ascending</label>
+            <input type="radio" name="sortbyasc" id="ascending" ng-model="sortBy" value="years" />
+
+            <label for="descending">Descending</label>
+            <input type="radio" name="sortbydesc" id="descending" ng-model="sortBy" value="-years" />
+        </form>
+        <ul id="skilllist" ng-repeat="skill in skills | orderBy: sortBy">
+            <li class="skill">
+                <label for="oneskill">Skill</label>
+                <input type="text" name="oneskill" id="oneskill" ng-model="skill.skill" />
+
+                <label for="years">Skill</label>
+                <input type="text" name="years" id="years" ng-model="skill.years" />
+
+                <button ng-click="">Update</button>
+                <button ng-click="">Delete</button>
+            </li>
+        </ul>
+    </div>
+</div>
