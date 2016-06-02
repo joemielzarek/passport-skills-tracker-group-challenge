@@ -37,4 +37,23 @@ router.post('/', function(req, res) {
   })
 });
 
+router.delete('/:id', function (req, res) {
+Skill.findByIdAndRemove(req.params.id, function (err) {
+  if(err) {
+    res.sendStatus(500);
+    return;
+  }
+  res.sendStatus(204);
+});
+});
+
+router.put('/:id', function (req, res) {
+  Skill.findByIdAndUpdate(req.params.id, req.body, function (err, skill) {
+    if (err) {
+      res.sendStatus(500);
+      return;
+    }
+    res.send(skill);
+  });
+});
 module.exports = router;

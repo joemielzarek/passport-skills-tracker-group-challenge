@@ -40,5 +40,19 @@ myApp.controller('SkillController', ['$scope', '$http', '$window', '$location', 
       console.log('got skill, man!');
     })
   }
-
+$scope.deleteSkill = function(skillID) {
+  $http.delete('/skills/' + skillID )
+  .then(function (response) {
+    console.log("Deleted skill");
+    getSkills();
+  });
+};
+$scope.updateSkill = function(skill) {
+  var skillID = skill._id;
+  $http.put('/skills/' + skillID, skill)
+  .then(function (response) {
+    console.log("Update successful");
+    getSkills();
+  });
+};
 }]);
